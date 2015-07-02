@@ -24,3 +24,18 @@ Example 5: A volume created in a docker container we use as a data container, an
 
 We get the same behavior as in Example 4. 
 
+
+Example 6: A volume is declared in a dockerfile, doesn't match anything in the run container
+
+Instead of decaring it at runtime and mounting it to a host folder, we declare it in a dockerfile so it exists in the docker container, but not on the host. 
+the permissions are for the root user. 
+
+Example 7: A volume is declared in a dockerfile, and does match a folder in the run container
+
+The volume overrides the folder in the run docker container, and now has a permissions for root. 
+
+Example 8: A volume is declared in a dockerfile, run with a --volume to match the host when creating the data container, then added to the run container
+
+The volume gets the user id and the group id of the user on the host machine. the --volume overrides the declared one in the dockerfile. 
+
+
