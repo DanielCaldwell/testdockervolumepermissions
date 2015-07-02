@@ -4,7 +4,18 @@ This repository is has examples of building docker containers which are using vo
 The Dockerfile creates a machine that is very simple. It is based off of ubuntu and it will create a new user, named testuser, and a directory and a file in that directory. The file and directory are both owned by the testuser. Note that the user and group are created independently. This is because I was testing on a machine where the UID and GID of the test user matched a user on the host vagrant machine. In otherwords I was running it on a vagrant machine as the vagrant user who had a uid of 1000, and a gid of 1000. Then when I ran the docker machine, the testuser had a uid of 1000 and a gid of 1000. Thus when mounting volumes if it used the uid and gid of the vagrant user, it would appear as the testuser in the docker machine. So I am creating them manually so they don't match. 
 
 
-Example 1: No volumes being mounted
+# Example 1: No volumes being mounted, created directories
+
+In example 1 we create two directories when building the docker image: 
+
+/testmadeinbuild
+/testmadeinbuildunchanged
+
+Checking the permissions we find that directories made during the build of the docker container will have root:root as their permissions.  However, we can change permissions as needed.
+
+
+
+
 
 In example 1, we create a docker container with no volumes and check the permissions. As we should see, it is owned by the test user and we see the file created during the build of the machine.
 

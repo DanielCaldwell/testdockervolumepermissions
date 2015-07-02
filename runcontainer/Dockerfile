@@ -4,6 +4,9 @@ FROM ubuntu:14.04
 RUN groupadd --gid 2342342 testuser
 RUN useradd testuser -u 2342342 -g testuser
 
+# make a directory
+RUN mkdir /testmadeinbuildunchanged
+
 # next add a directory
 RUN mkdir /testmadeinbuild
 
